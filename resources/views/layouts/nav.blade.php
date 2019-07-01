@@ -1,32 +1,35 @@
 <nav id="mynav" class="navbar navbar-expand-lg navbar-dark bg-primary">
-  <img style="padding-right:5px;border:1px white solid;margin-right:10px;margin-top:10px;background-color:white;" src="/images/PLSE-Logo-1.png" width="15%" height="auto" /><a style="font-size:1.8em;margin-top:20px;" class="navbar-brand" href="/dashboard">PardonMe™</a>
+  <img style="padding-right:5px;border:1px white solid;margin-right:10px;margin-top:10px;background-color:white;" src="/images/PLSE-Logo-1.png" width="15%" height="auto" />
+  @guest
+  <a style="font-size:1.8em;margin-top:20px;" class="navbar-brand" href="/">PardonMe™</a>
+  @else
+  <a style="font-size:1.8em;margin-top:20px;" class="navbar-brand" href="/home">PardonMe™</a>
+  @endguest
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mobileMenu" aria-controls="mobileMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
 
   <div style="margin-top:20px;font-size:1.2em;" class="collapse navbar-collapse" id="mobileMenu">
-    <ul class="navbar-nav mr-auto">
+      <ul class="navbar-nav mr-auto">
       @guest
       @else
       <li class="nav-item active">
-        <a class="nav-link" href="{{url('dashboard')}}">Dashboard <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="{{url('home')}}">Dashboard <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Help</a>
+        <a class="nav-link" href="{{url('help')}}">Help</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Awards</a>
+        <a class="nav-link" href="{{url('awards')}}">Awards</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">About</a>
+        <a class="nav-link" href="{{url('about')}}">About</a>
       </li>
       @endguest
     </ul>
       <!-- Right Side Of Navbar -->
       <ul class="navbar-nav ml-auto">
           <li class="nav-item text-white"><a class="nav-link" href="http://plsephilly.org/">PLSE Info</a></li>
-          <!--<li class="nav-item"><span class="nav-link">|</span></li>-->
-          <!-- Authentication Links -->
           @guest
               <li class="nav-item">
                   <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
